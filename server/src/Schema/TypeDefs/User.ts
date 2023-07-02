@@ -3,10 +3,11 @@ import {
   GraphQLID,
   GraphQLString,
   GraphQLNonNull,
-  GraphQLList,
-  GraphQLInt,
   GraphQLFieldConfigMap,
+  GraphQLFloat,
+  GraphQLList,
 } from "graphql";
+import { PlaneType } from "./Plane";
 
 export const UserType = new GraphQLObjectType({
   name: "User",
@@ -14,8 +15,11 @@ export const UserType = new GraphQLObjectType({
     _id: { type: new GraphQLNonNull(GraphQLID) },
     name: { type: GraphQLString },
     username: { type: new GraphQLNonNull(GraphQLString) },
+    phone: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: GraphQLString },
     email: { type: new GraphQLNonNull(GraphQLString) },
+    currentPlane: { type: PlaneType },
+    lastPlanes: { type: GraphQLList(PlaneType) },
     location: {
       type: new GraphQLObjectType({
         name: "Location",
@@ -26,8 +30,8 @@ export const UserType = new GraphQLObjectType({
             type: new GraphQLObjectType({
               name: "Coords",
               fields: {
-                lat: { type: GraphQLInt },
-                lng: { type: GraphQLInt },
+                lat: { type: GraphQLFloat },
+                lng: { type: GraphQLFloat },
               },
             }),
           },

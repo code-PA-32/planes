@@ -14,12 +14,10 @@ export const PostType: GraphQLObjectType<undefined, undefined> =
     fields: () => ({
       _id: { type: new GraphQLNonNull(GraphQLID) },
       title: { type: new GraphQLNonNull(GraphQLString) },
-      images: {
-        type: new GraphQLList(GraphQLString),
-      },
+      images: { type: new GraphQLList(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLString) },
       date: { type: new GraphQLNonNull(GraphQLString) },
-      userId: { type: UserType },
-      planeId: { type: PlaneType },
+      user: { type: UserType },
+      plane: { type: PlaneType },
     }),
   });

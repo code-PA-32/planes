@@ -75,9 +75,8 @@ const planeSchema = new Schema({
     },
   },
   avionics: {
-    type: Map,
-    of: String,
-    default: {},
+    type: String,
+    required: true,
   },
   extra: [{ type: String }],
   exterior: {

@@ -9,6 +9,7 @@ import {
   Kind,
 } from "graphql";
 import { PlaneType } from "../TypeDefs";
+import { PlaneModel } from "../../Models";
 
 export const createPlane = {
   type: PlaneType,
@@ -51,7 +52,58 @@ export const createPlane = {
     },
     avionics: { type: GraphQLString },
   },
-  resolve: (parent: unknown, args: { [argName: string]: any }) => {
-    return args;
+  async resolve(parent: unknown, args: { [argName: string]: any }) {
+    const {
+      category,
+      manufacturer,
+      model,
+      onSale,
+      price,
+      description,
+      year,
+      serialNumber,
+      condition,
+      totalTime,
+      seats,
+      extra,
+      interior,
+      exterior,
+      inspection,
+      images,
+      engine,
+      props,
+      avionics,
+    } = args;
+
+    try {
+      console.log('try')
+      const newPlane = new PlaneModel({
+        category,
+        manufacturer,
+        model,
+        onSale,
+        price,
+        description,
+        year,
+        serialNumber,
+        condition,
+        totalTime,
+        seats,
+        extra,
+        interior,
+        exterior,
+        inspection,
+        images,
+        engine,
+        props,
+        avionics,
+        owner: "64a15b2959c5af5daf3d6d71",
+      });
+      await newPlane.save();
+      return newPlane;
+    } catch (error) {
+      console.log(error)
+      throw new Error("Cant create a plane");
+    }
   },
 };

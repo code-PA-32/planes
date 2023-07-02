@@ -20,11 +20,11 @@ const postSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  planeId: {
+  plane: {
     type: Schema.Types.ObjectId,
     ref: "Plane",
   },
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },

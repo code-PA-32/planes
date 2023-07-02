@@ -1,11 +1,19 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { getAllUser, getAllPlanes, getAllPost } from "./Queries";
-import { createUser, createPlane, createPost } from "./Mutation";
+import {
+  getAllUser,
+  getAllPlanes,
+  getAllPost,
+  getUserById,
+  getPlaneById,
+} from "./Queries";
+import { createPost, createUser, createPlane } from "./Mutation";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
   fields: {
     getAllUser,
+    getUserById,
+    getPlaneById,
     getAllPlanes,
     getAllPost,
   },

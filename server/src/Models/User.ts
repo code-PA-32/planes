@@ -29,10 +29,18 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Plane",
   },
+  lastPlanes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Plane",
+      default: [],
+    },
+  ],
   posts: [
     {
       type: Schema.Types.ObjectId,
       ref: "Post",
+      default: [],
     },
   ],
   location: {
